@@ -1,8 +1,8 @@
 """
 Distance is a class for any length of measurement.
 """
-from abc import ABC, abstractmethod
 
+from Unit import *
 
 """
 OPTIONS dictionary maps units with array indices for the conversion table.
@@ -33,20 +33,9 @@ CONVERSION_TABLE = [
 ]
 
 
-# Returns array of size 2: 1st index is the value and 2nd index is the unit.
-def parseStringToDistance(string):
-    return string.split(' ', 2)
-
-class Distance():
+class Distance(Unit):
     def __init__(self, value, unit_lbl):
-        self.value = value
-        self.lbl = unit_lbl
-
-    def __repr__(self):
-        return repr(str(self.value) + ' ' + self.lbl)
-    
-    def __str__(self):
-        return str(round(self.value, 3)) + ' ' + self.lbl
+        super().__init__(value, unit_lbl)
     
 
     # Converts the value and returns it as a new distance object with the proper label
@@ -57,7 +46,8 @@ class Distance():
         return Distance(self.value * CONVERSION_TABLE[table_row][table_col], convertTo)
 
 
+# Just used for testing rn.
 if __name__ == "__main__":
     d = "131.6666666 ft"
-    ds = parseStringToDistance(d)
+    ds = parseStringToUnit(d)
     print(ds[0] + ds[1])
