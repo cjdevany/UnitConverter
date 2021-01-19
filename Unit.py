@@ -16,3 +16,7 @@ class Unit(ABC):
     def convert(self, convertTo):
         pass
 
+    @abstractmethod
+    def getOptions(self):
+        pass
+

@@ -2,16 +2,7 @@ import tkinter as tk
 from Distance import *
 
 # Options list for the dropdown menus to select units
-OPTIONS = [
-        '  ',
-        'in',
-        'ft',
-        'yd',
-        'mi',
-        'cm',
-        'm',
-        'km'
-]
+OPTIONS = Distance(0, None).getOptions()
 
 class MainWindow(tk.Frame):
     def __init__(self, parent):
@@ -30,7 +21,7 @@ class MainWindow(tk.Frame):
 
         # Create unit selection drop down menu for input unit
         input_variable = tk.StringVar(master)
-        input_variable.set(OPTIONS[0])  # Default option shown in menu
+        input_variable.set(' ')  # Default option shown in menu
         self.unit_input = tk.OptionMenu(master, input_variable, *OPTIONS, command=self.updateInpUnit)
         self.unit_input.pack()
 
@@ -44,7 +35,7 @@ class MainWindow(tk.Frame):
 
         # Create unit selection drop down menu for output unit
         output_variable = tk.StringVar(master)
-        output_variable.set(OPTIONS[0])
+        output_variable.set(' ')
         self.unit_output = tk.OptionMenu(master, output_variable,  *OPTIONS, command=self.updateOutpUnit)
         self.unit_output.pack()
 

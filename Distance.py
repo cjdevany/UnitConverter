@@ -45,6 +45,10 @@ class Distance(Unit):
         table_col = OPTIONS.get(convertTo)
         return Distance(self.value * CONVERSION_TABLE[table_row][table_col], convertTo)
 
+    
+    def getOptions(self):
+        return list(OPTIONS.keys())
+
 
 # Just used for testing rn.
 if __name__ == "__main__":
