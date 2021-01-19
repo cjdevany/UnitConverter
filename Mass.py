@@ -1,5 +1,6 @@
 from Unit import *
 
+
 OPTIONS = {
             'oz' : 0,
             'lb' : 1,
@@ -29,7 +30,6 @@ class Mass(Unit):
     
     # Converts the value and returns a new Mass object with the proper label
     def convert(self, convertTo):
-        convertTo = convertTo.lower()
         table_row = OPTIONS.get(self.lbl)
         table_col = OPTIONS.get(convertTo)
         return Mass(self.value * CONVERSION_TABLE[table_row][table_col], convertTo)
@@ -40,4 +40,6 @@ class Mass(Unit):
 
 # Just used for testing
 if __name__ == "__main__":
-    print()
+    m1 = Mass(100, 'g')
+    print(m1)
+    print(m1.convert('oz'))

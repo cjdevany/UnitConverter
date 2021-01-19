@@ -40,7 +40,6 @@ class Distance(Unit):
 
     # Converts the value and returns it as a new distance object with the proper label
     def convert(self, convertTo):
-        convertTo = convertTo.lower()
         table_row = OPTIONS.get(self.lbl)
         table_col = OPTIONS.get(convertTo)
         return Distance(self.value * CONVERSION_TABLE[table_row][table_col], convertTo)
